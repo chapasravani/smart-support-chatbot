@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Support</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="main">
+
+<!-- LEFT SIDE -->
+<div class="left">
+
+<h1>CHAT <span>Bot</span></h1>
+<p>Clean UI design concept</p>
+
+<div class="robot">🤖</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="right">
+
+<div class="phone">
+
+<div class="header">💬 Smart Support</div>
+
+<div id="chatbox" class="chatbox">
+
+<div class="message bot-msg">👋 Hello! Welcome to Smart Support.</div>
+<div class="message bot-msg">How can I help you today?</div>
+
+</div>
+
+<div class="input-area">
+<input id="msg" placeholder="Type message..." onkeypress="handleKey(event)">
+<button onclick="sendMsg()">➤</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function handleKey(e){
+if(e.key==="Enter") sendMsg();
+}
+
+function sendMsg(){
+
+let msg=document.getElementById("msg").value.trim();
+if(msg==="") return;
+
+let chatbox=document.getElementById("chatbox");
+
+chatbox.innerHTML+=`
+<div class="message user-msg">${msg}</div>
+`;
+
+chatbox.innerHTML+=`
+<div class="message bot-msg typing">Typing...</div>
+`;
+
+chatbox.scrollTop=chatbox.scrollHeight;
+
+fetch("/chat",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({message:msg})
+})
+.then(res=>res.json())
+.then(data=>{
+
+let typing=document.querySelector(".typing:last-child");
+typing.remove();
+
+chatbox.innerHTML+=`
+<div class="message bot-msg">${data.reply}</div>
+`;
+
+chatbox.scrollTop=chatbox.scrollHeight;
+
+});
+
+document.getElementById("msg").value="";
+}
+
+</script>
+
+</body>
+</html>

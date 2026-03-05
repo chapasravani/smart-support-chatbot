@@ -1,0 +1,110 @@
+body{
+margin:0;
+font-family:Arial, sans-serif;
+}
+
+/* 🌈 background */
+.main{
+height:100vh;
+background:linear-gradient(135deg,#8e2de2,#4a00e0);
+display:flex;
+align-items:center;
+justify-content:space-around;
+color:black;
+}
+
+/* LEFT SIDE */
+.left h1{
+font-size:60px;
+margin:0;
+}
+
+.left span{
+opacity:0.6;
+}
+
+.left p{
+margin-top:10px;
+opacity:0.8;
+}
+
+.robot{
+font-size:70px;
+margin-top:30px;
+}
+
+/* RIGHT SIDE PHONE */
+.phone{
+width:320px;
+height:600px;
+background:black;
+border-radius:30px;
+padding:8px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+display:flex;
+flex-direction:column;
+}
+
+.header{
+background:#075e54;
+color:white;
+padding:12px;
+text-align:center;
+border-radius:15px 15px 0 0;
+}
+
+.chatbox{
+flex:1;
+background:#efeae2;
+padding:10px;
+overflow-y:auto;
+}
+
+.message{
+max-width:70%;
+padding:10px;
+margin:6px;
+border-radius:12px;
+font-size:14px;
+}
+
+.user-msg{
+background:#dcf8c6;
+margin-left:auto;
+}
+
+.bot-msg{
+background:white;
+margin-right:auto;
+}
+
+.typing{
+font-style:italic;
+color:gray;
+}
+
+.input-area{
+display:flex;
+padding:10px;
+background:#f0f0f0;
+border-radius:0 0 15px 15px;
+}
+
+input{
+flex:1;
+padding:10px;
+border-radius:20px;
+border:1px solid #ccc;
+outline:none;
+}
+
+button{
+margin-left:10px;
+padding:10px 15px;
+border:none;
+border-radius:50%;
+background:#075e54;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
